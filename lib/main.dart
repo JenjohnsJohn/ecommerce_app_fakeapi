@@ -1,7 +1,20 @@
+import 'package:ecommerce_app_fakeapi/controller/register_controller.dart';
+import 'package:ecommerce_app_fakeapi/service/product_service.dart';
 import 'package:ecommerce_app_fakeapi/view/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'controller/login_controller.dart';
+import 'service/api_service.dart';
+import 'service/auth_service.dart';
 
 void main() {
+  // Initialize GetX
+  Get.lazyPut(() => AuthService());
+  Get.lazyPut(() => ProductService());
+  Get.lazyPut(() => ApiService());
+  Get.lazyPut(() => LoginController());
+  Get.lazyPut(() => RegisterController());
   runApp(const MyApp());
 }
 
@@ -11,7 +24,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -32,7 +45,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

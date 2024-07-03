@@ -1,0 +1,74 @@
+class UserModel {
+  String email;
+  String username;
+  String password;
+  Name name;
+  Address address;
+  String phone;
+
+  UserModel({
+    required this.email,
+    required this.username,
+    required this.password,
+    required this.name,
+    required this.address,
+    required this.phone,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'email': email,
+        'username': username,
+        'password': password,
+        'name': name.toJson(),
+        'address': address.toJson(),
+        'phone': phone,
+      };
+}
+
+class Name {
+  String firstname;
+  String lastname;
+
+  Name({required this.firstname, required this.lastname});
+
+  Map<String, dynamic> toJson() => {
+        'firstname': firstname,
+        'lastname': lastname,
+      };
+}
+
+class Address {
+  String city;
+  String street;
+  int number;
+  String zipcode;
+  Geolocation geolocation;
+
+  Address({
+    required this.city,
+    required this.street,
+    required this.number,
+    required this.zipcode,
+    required this.geolocation,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'city': city,
+        'street': street,
+        'number': number,
+        'zipcode': zipcode,
+        'geolocation': geolocation.toJson(),
+      };
+}
+
+class Geolocation {
+  String lat;
+  String long;
+
+  Geolocation({required this.lat, required this.long});
+
+  Map<String, dynamic> toJson() => {
+        'lat': lat,
+        'long': long,
+      };
+}
